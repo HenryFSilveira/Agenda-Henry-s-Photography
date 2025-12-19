@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Henry's Photography | Agenda</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Mantém a página estática sem rolagem */
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Fundo com degradê para legibilidade */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), 
+                        url('./background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            padding-top: 10px; /* Ajusta a logo bem próxima ao topo */
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            width: 350px;
+            max-width: 65%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* CONTAINER DA AGENDA - Centralizado verticalmente */
+        .calendar-container {
+            width: 95%; 
+            max-width: 850px; 
+            flex-grow: 1; /* Ocupa o espaço central */
+            display: flex;
+            align-items: center; /* Centraliza o calendário no meio do espaço disponível */
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            mix-blend-mode: lighten; 
+        }
+
+        .calendar-wrapper {
+            width: 100%;
+            height: 85%; /* Altura interna para não encostar na logo nem no footer */
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: invert(90%) hue-rotate(180deg) brightness(1.2) contrast(1.1);
+        }
+
+        /* AJUSTE PARA CELULAR */
+        @media (max-width: 700px) {
+            header { padding-top: 0px; }
+            .logo-img { width: 200px; } 
+
+            .calendar-wrapper {
+                height: 90%; /* Aproveita mais espaço no mobile */
+            }
+
+            iframe {
+                /* Técnica de escala para visualização desktop no mobile sem cortes */
+                width: 160%; 
+                height: 160%;
+                transform: scale(0.625); 
+                transform-origin: top left;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding-bottom: 30px; /* Sobe o footer, descolando da borda inferior */
+            font-size: 0.6rem;
+            color: white;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Henry's Photography Logo" class="logo-img">
+    </header>
+
+    <div class="calendar-container">
+        <div class="calendar-wrapper">
+            <iframe src="https://calendar.google.com/calendar/u/1/embed?wkst=1&ctz=America/Sao_Paulo&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&src=Y29udGF0by5oZW5yeXNwaG90b2dyYXBoeUBnbWFpbC5jb20&color=%237cb342" 
+                    frameborder="0" 
+                    scrolling="no"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 HENRY'S PHOTOGRAPHY
+    </footer>
+
+</body>
+</html>
